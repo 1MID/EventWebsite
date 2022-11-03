@@ -1,0 +1,41 @@
+<div class="on-board-container">
+    <div class="onboard-content-bg">
+        <div class="content">
+
+            <!-- 標題 -->
+            <div class="subject">
+                <h1 class="title">{{title}}</h1>
+                <div class="term">{{term}}</div>
+            </div>
+
+            <!-- 內文 -->
+            <div class="content-container">
+                <p class="content">{{content}}</p>
+                <p class="sub-content">{{subContent}}</p>
+            </div>
+
+            <!-- 匿名者 -->
+            <div class="anonymous">
+                <div class="bounty-relative">
+                    <div class="bounty-block" *ngFor="let info of bounty">
+                        <span class="prize">{{info.prize}}</span>
+                        <span class="reward">{{info.reward}}</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 懸賞任務 -->
+            <img src="../../../../assets/onboard/bounty-tag.png" class="bounty-tag" />
+
+            <!-- 報名人數 -->
+            <div class="attend-info-container">
+                <span *ngFor="let info of attendInfo" class="attend-info">
+                    報名總人數 <span class="attend-count">{{info}}</span> 人
+                </span>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<app-paper-mask></app-paper-mask>

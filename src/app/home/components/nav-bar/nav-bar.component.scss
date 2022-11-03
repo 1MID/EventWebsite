@@ -1,0 +1,48 @@
+.nav-bar-container {
+    z-index: 2;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    background: #38241B;
+    height: 8.6111vh;
+    display: flex;
+    align-items: center;
+    padding: 0 3.125vw;
+    box-sizing: border-box;
+
+    .logo {
+        width: 11.328vw;
+        height: 4.86111vh;
+
+    }
+
+    .nav-item-container {
+        width: 100%;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .nav-item {
+            font-family: 'Noto Sans TC';
+            font-size: 18px;
+            line-height: 26px;
+            color: #FFFFFF;
+            margin-left: 2.8125vw;
+        }
+
+        .sign-up {
+            font-family: 'Noto Sans TC';
+            font-style: normal;
+            font-weight: bold;
+            width: 14.296vw;
+            height: 5.8333vh;
+            border-radius: 5.555vh;
+            background: #951205;
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+            color: #FFFFFF;
+            font-size: 20px;
+            border: none;
+            margin-left: 1.171vw;
+        }
+    }
+}
