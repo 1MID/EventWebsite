@@ -15,7 +15,7 @@
             </div>
 
             <!-- 匿名者 -->
-            <div class="anonymous">
+            <div class="anonymous" #anonymous>
                 <div class="bounty-relative">
                     <div class="bounty-block" *ngFor="let info of bounty">
                         <span class="prize">{{info.prize}}</span>
@@ -34,8 +34,11 @@
                 </span>
             </div>
 
+            <!-- 向下滑動 -->
+            <app-scroll-down *ngIf="showCompleteBoardPage" class="scroll-down"></app-scroll-down>
         </div>
     </div>
 </div>
 
-<app-paper-mask *ngIf="enabledPaperAnimate" (animateFinish)="paperAnimateFinish()"></app-paper-mask>
+<app-paper-mask *ngIf="enabledPaperAnimate" (animateFinish)="paperAnimateFinish()"
+    (animateStageEmit)="getMaskStage($event)"></app-paper-mask>

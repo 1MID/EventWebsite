@@ -17,12 +17,14 @@ export class LevelComponent implements OnInit, OnDestroy {
   levelInfo = levelInfoConfig
   currentLevelItemIndex = -1; // 當前畫面的item索引
   maxReadIndex = 0; // 滑到過最後面的索引
+  disabledScroll = false;
+  scrollSnapAlignIsStart = true;
+  alreadyReduceThrottleTime = false;
   private scrollEventSub!: Subscription;
 
   @HostListener("wheel", ["$event"])
   public onScroll(event: any) {
-    const inLevelArea = this.currentLevelItemIndex <= 3 && this.currentLevelItemIndex >= 0; // 限制範圍內才禁用wheel，否則會到不了其他頁面
-    if (this.onBoardFinish && inLevelArea) {
+    if (this.disabledScroll) {
       event.preventDefault();
     }
   }
@@ -31,10 +33,6 @@ export class LevelComponent implements OnInit, OnDestroy {
     private renderer: Renderer2,
     private commonService: CommonService
   ) { }
-
-  get onBoardFinish() {
-    return this.commonService.getStatus().includes('onBoardFinish');
-  }
 
   ngOnInit(): void {
     this.subscribeWheelEvent();
@@ -45,54 +43,77 @@ export class LevelComponent implements OnInit, OnDestroy {
   }
 
   subscribeWheelEvent() {
-    this.scrollEventSub = fromEvent(window, 'wheel')
-      .pipe(
-        throttleTime(750),
-        tap((event: any) => { this.scrollEventHandler(event) })
-      ).subscribe();
+    this.scrollEventSub = this.getScrollObservable(750).subscribe();
   }
 
   scrollEventHandler(scrollEvent: any) {
-    if (!this.onBoardFinish) { return; }
+    // 判斷是否屬於level頁範圍中，如果不是則不往下做
+    this.disabledScroll = this.shouldDisableScroll(scrollEvent.wheelDelta < 0 ? 'down' : 'up');
+    if (!this.disabledScroll) { return; }
 
-    const overEdge =
-      (scrollEvent.wheelDelta < 0 && this.currentLevelItemIndex >= this.levelInfo.length) ||
-      (scrollEvent.wheelDelta > 0 && this.currentLevelItemIndex < 0)
-    if (overEdge) { return; }
-
+    // 當前屬於level頁範圍中，根據 滑鼠scroll事件 對當前ItemIndex進行修改
     this.currentLevelItemIndex += (scrollEvent.wheelDelta < 0) ? 1 : -1;
+
+    // 紀錄當前看到的最後一個Item，避免動畫看過又重複看
+    // 如果已經結束所有item動畫，則將Throttle 從原先 750ms 調整為 200ms 加快使用者體驗
     this.maxReadIndex = Math.max(this.maxReadIndex, this.currentLevelItemIndex);
+    const alreadyFinishItemAnimate = this.maxReadIndex === (this.levelInfo.length + 1)
+    if (alreadyFinishItemAnimate) { this.reduceScrollThrottleTime(); }
 
-    setTimeout(() => {
-      this.scrollToCurElement();
-      switch (this.currentLevelItemIndex) {
-        case 1: this.showItem1Animate(); break;
-        case 2: this.showItem2Animate(); break;
-        case 3: this.showItem3Animate(); break;
-        default: break;
-      }
-    }, 0);
+    //  移到該區域
+    this.scrollToCurElement();
+    // 若是未看過動畫則新增class至該element並顯示動畫
+    if ((this.currentLevelItemIndex === this.maxReadIndex) && (this.currentLevelItemIndex === 1)) { this.showItem1Animate(); }
+    else if ((this.currentLevelItemIndex === this.maxReadIndex) && (this.currentLevelItemIndex === 2)) { this.showItem2Animate(); }
+    else if ((this.currentLevelItemIndex === this.maxReadIndex) && (this.currentLevelItemIndex === 3)) { this.showItem3Animate(); }
 
+    console.log('當前item索引：' + this.currentLevelItemIndex, '當前看過最大索引：' + this.maxReadIndex);
+  }
+
+  private shouldDisableScroll(sreenScroll: 'up' | 'down') {
+    if (!this.commonService.getStatus().includes('onBoardLeave')) { return false; } // 還沒離開onBoard頁面
+
+    // 判斷有沒有越界
+    const nextStep = (sreenScroll === 'down') ? this.currentLevelItemIndex + 1 : this.currentLevelItemIndex - 1;
+    const overLowwer = (sreenScroll === 'up' && nextStep < -1);
+    const overUpper = (sreenScroll === 'down' && nextStep > this.levelInfo.length + 1);
+    // 如果越界，順便更改下次進來時的scroll-snap-align
+    if (overLowwer) { this.scrollSnapAlignIsStart = true; return false; }
+    else if (overUpper) { this.scrollSnapAlignIsStart = false; return false; }
+    else { return true };
   }
 
   private scrollToCurElement() {
     const el = document.getElementById('levelItem' + this.currentLevelItemIndex);
+    console.log(this.currentLevelItemIndex === 0 ? 'start' : 'center')
     el?.scrollIntoView({ behavior: 'smooth', block: this.currentLevelItemIndex === 0 ? 'start' : 'center' })
   }
 
   private showItem1Animate() {
-    this.renderer.addClass(this.levelItem1.nativeElement, 'animate__animated');
     this.renderer.addClass(this.levelItem1.nativeElement, 'animate__slideInLeft');
   }
 
   private showItem2Animate() {
-    this.renderer.addClass(this.levelItem2.nativeElement, 'animate__animated');
     this.renderer.addClass(this.levelItem2.nativeElement, 'animate__slideInRight');
   }
 
   private showItem3Animate() {
-    this.renderer.addClass(this.levelItem3.nativeElement, 'animate__animated');
     this.renderer.addClass(this.levelItem3.nativeElement, 'animate__slideInLeft');
+  }
+
+  private reduceScrollThrottleTime() {
+    if (this.alreadyReduceThrottleTime) { return; };
+    this.scrollEventSub.unsubscribe();
+    this.scrollEventSub = this.getScrollObservable(200).subscribe();
+    this.alreadyReduceThrottleTime = true;
+  }
+
+  private getScrollObservable(throttle: number) {
+    return fromEvent(window, 'wheel')
+      .pipe(
+        throttleTime(throttle),
+        tap((event: any) => { this.scrollEventHandler(event) })
+      )
   }
 
 }

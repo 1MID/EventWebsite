@@ -6,6 +6,7 @@
 
     <div class="illustration-container">
         <img [src]="item.illustrationSrc">
+        <app-scroll-down *ngIf="showScrollHint" class="scroll-down"></app-scroll-down>
     </div>
 
     <div class="content-container">

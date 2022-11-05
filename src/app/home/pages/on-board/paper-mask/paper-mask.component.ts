@@ -9,10 +9,15 @@ import { tap, throttleTime } from 'rxjs/operators';
 })
 export class PaperMaskComponent implements OnInit, OnDestroy {
   @Output() animateFinish = new EventEmitter<any>();
+  @Output() animateStageEmit = new EventEmitter<any>();
+
   @ViewChild("paperTop") paperTop!: ElementRef;
   @ViewChild("paperRight") paperRight!: ElementRef;
   @ViewChild("paperLeft") paperLeft!: ElementRef;
+  @ViewChild("scrollDown") scrollDown!: ElementRef;
+
   animateStage = 0;
+
   private scrollEventSub!: Subscription;
 
   @HostListener("wheel", ["$event"])
@@ -45,6 +50,7 @@ export class PaperMaskComponent implements OnInit, OnDestroy {
   animateController(scrollEvent: any) {
     if (scrollEvent.wheelDelta > 0) { return; }
     this.animateStage++;
+    this.animateStageEmit.emit(this.animateStage);
 
     switch (this.animateStage) {
       case 1:
@@ -57,6 +63,9 @@ export class PaperMaskComponent implements OnInit, OnDestroy {
 
         this.renderer.addClass(this.paperRight.nativeElement, 'right-1');
         this.renderer.addClass(this.paperLeft.nativeElement, 'left-1');
+
+        this.renderer.addClass(this.scrollDown.nativeElement, 'animate__animated');
+        this.renderer.addClass(this.scrollDown.nativeElement, 'animate__fadeOut');
         break;
 
       case 3:

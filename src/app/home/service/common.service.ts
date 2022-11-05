@@ -20,5 +20,4 @@ export class CommonService {
   getStatus() {
     return this._status;
   }
-
 }

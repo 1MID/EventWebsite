@@ -1,0 +1,115 @@
+.schedule-container {
+    width: 100%;
+    scroll-snap-align: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    scroll-snap-type: y mandatory;
+
+    .header {
+        width: 100%;
+        height: 23.6111vh;
+        background: #3C221B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: 'Noto Serif TC';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 60px;
+        line-height: 86px;
+        color: #FFFFFF;
+    }
+
+    .info-block {
+        scroll-snap-align: center;
+        margin-top: 12.777vh;
+        width: 100%;
+        padding: 0 2.89vw;
+        box-sizing: border-box;
+        display: flex;
+        justify-content: center;
+
+        .item {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            min-width: 25%;
+
+            .title {
+                font-family: 'Noto Sans TC';
+                font-style: normal;
+                font-size: 30px;
+                line-height: 43px;
+                font-weight: bold;
+                color: #38241B;
+                white-space: nowrap;
+            }
+
+            .rhombus {
+                margin: 2.777vh 0 4.444vh 0;
+                width: 48.53px;
+                height: 48.53px;
+                background-color: #3C221B;
+                transform: rotate(-45deg);
+
+                .line {
+                    width: 100%;
+                    height: 100%;
+                    transform: rotate(45deg);
+                    position: relative;
+
+                    &:before {
+                        content: '';
+                        position: absolute;
+                        left: calc(100% + 6px);
+                        top: 50%;
+                        transform: translate(0, -50%);
+                        border-top: 5px solid #3C221B;
+                        width: 19.843vw;
+                    }
+                }
+
+                &.red {
+                    background-color: #951205;
+                }
+
+
+            }
+
+            .content {
+                font-family: 'Noto Sans TC';
+                font-style: normal;
+                font-weight: bold;
+                font-size: 24px;
+                line-height: 35px;
+                color: #38241B;
+                max-width: 20.39vw;
+                overflow: hidden;
+                display: -webkit-box;
+                -webkit-line-clamp: 2;
+                -webkit-box-orient: vertical;
+            }
+        }
+    }
+
+    .detail-container {
+        padding: 6.111vh 2.89vw 12.777vh 2.89vw;
+        box-sizing: border-box;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .detail {
+
+            font-family: 'Noto Sans TC';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 28px;
+            line-height: 41px;
+        }
+    }
+}

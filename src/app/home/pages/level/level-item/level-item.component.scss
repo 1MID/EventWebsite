@@ -37,6 +37,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+
+        .scroll-down {
+            position: absolute;
+            transform: translate(0, 12vh);
+            filter: brightness(0) invert(1);
+        }
     }
 
     .content-container {

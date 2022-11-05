@@ -1,4 +1,4 @@
-<div class="level-container">
+<div class="level-container" [ngStyle]="{'scroll-snap-align': scrollSnapAlignIsStart ? 'start' : 'end'}">
 
     <div id="levelItem0" #levelItem0>
         <img class="hex-school" src="assets/level/hexSchool.png">
@@ -6,17 +6,17 @@
         <div class="divider"></div>
     </div>
 
-    <div id="levelItem1" #levelItem1>
-        <app-level-item [item]="levelInfo[0]" [show]="this.maxReadIndex > 0">
+    <div id="levelItem1" #levelItem1 class="animate__animated">
+        <app-level-item [item]="levelInfo[0]" [show]="this.maxReadIndex > 0" [showScrollHint]="true">
         </app-level-item>
     </div>
 
-    <div id="levelItem2" #levelItem2>
+    <div id="levelItem2" #levelItem2 class="animate__animated">
         <app-level-item [item]="levelInfo[1]" [show]="this.maxReadIndex > 1">
         </app-level-item>
     </div>
 
-    <div id="levelItem3" #levelItem3>
+    <div id="levelItem3" #levelItem3 class="animate__animated">
         <app-level-item [item]="levelInfo[2]" [show]="this.maxReadIndex > 2">
         </app-level-item>
     </div>

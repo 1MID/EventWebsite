@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { CommonService } from '../../service/common.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { CommonService } from '../../service/common.service';
   styleUrls: ['./on-board.component.scss']
 })
 export class OnBoardComponent implements OnInit {
+  @ViewChild("anonymous") anonymous!: ElementRef;
 
   title = "THE F2E"
   term = "4th";
@@ -22,7 +23,8 @@ export class OnBoardComponent implements OnInit {
   showCompleteBoardPage = false;
 
   constructor(
-    private commonService: CommonService
+    private commonService: CommonService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -33,9 +35,23 @@ export class OnBoardComponent implements OnInit {
     this.enabledPaperAnimate = true;
   }
 
+  getMaskStage(stage: number) {
+    switch (stage) {
+      case 2:
+        this.renderer.addClass(this.anonymous.nativeElement, 'anonymous-1');
+        break;
+      case 3:
+        this.renderer.removeClass(this.anonymous.nativeElement, 'anonymous-1');
+        this.renderer.addClass(this.anonymous.nativeElement, 'anonymous-2');
+        break;
+      default:
+        break;
+    }
+  }
+
   paperAnimateFinish() {
     this.enabledPaperAnimate = false;
     this.showCompleteBoardPage = true;
-    this.commonService.setStatus('onBoardFinish');
+    this.commonService.setStatus('onBoardLeave');
   }
 }

@@ -8,6 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class LevelItemComponent implements OnInit {
   @Input() item: any;
   @Input() show: boolean = false;
+  @Input() showScrollHint: boolean = false;
 
   constructor() { }
 
