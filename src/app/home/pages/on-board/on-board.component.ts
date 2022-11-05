@@ -1,4 +1,5 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CommonService } from '../../service/common.service';
 
 @Component({
   selector: 'app-on-board',
@@ -17,16 +18,24 @@ export class OnBoardComponent implements OnInit {
     { prize: "團體獎", reward: "$10,000" }
   ]
 
-  constructor() { }
+  enabledPaperAnimate = false;
+  showCompleteBoardPage = false;
+
+  constructor(
+    private commonService: CommonService
+  ) { }
 
   ngOnInit(): void {
-
+    this.initAnimate();
   }
 
-  // @HostListener("wheel", ["$event"])
-  // public onScroll(event: any) {
-  //   console.log(event.wheelDelta)
-  //   event.preventDefault();
-  // }
+  initAnimate() {
+    this.enabledPaperAnimate = true;
+  }
 
+  paperAnimateFinish() {
+    this.enabledPaperAnimate = false;
+    this.showCompleteBoardPage = true;
+    this.commonService.setStatus('onBoardFinish');
+  }
 }

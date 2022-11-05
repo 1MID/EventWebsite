@@ -1,0 +1,24 @@
+<div class="level-container">
+
+    <div id="levelItem0" #levelItem0>
+        <img class="hex-school" src="assets/level/hexSchool.png">
+        <h2 class="sub-title">年度最強合作，三大關卡來襲</h2>
+        <div class="divider"></div>
+    </div>
+
+    <div id="levelItem1" #levelItem1>
+        <app-level-item [item]="levelInfo[0]" [show]="this.maxReadIndex > 0">
+        </app-level-item>
+    </div>
+
+    <div id="levelItem2" #levelItem2>
+        <app-level-item [item]="levelInfo[1]" [show]="this.maxReadIndex > 1">
+        </app-level-item>
+    </div>
+
+    <div id="levelItem3" #levelItem3>
+        <app-level-item [item]="levelInfo[2]" [show]="this.maxReadIndex > 2">
+        </app-level-item>
+    </div>
+
+</div>

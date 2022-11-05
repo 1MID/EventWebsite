@@ -1,0 +1,38 @@
+.level-container {
+    width: 100%;
+    scroll-snap-align: start;
+    background-image: url('../../../../assets/common/bg.png');
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12vh 3.125vw 18.47vh 3.125vw;
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+    overflow-x: hidden;
+
+    .hex-school {
+        width: 590px;
+        height: 146.83px;
+    }
+
+    .sub-title {
+        margin-top: 5.8333vh;
+        font-family: 'Noto Sans TC';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 43px;
+        line-height: 62px;
+        text-align: center;
+        letter-spacing: 0.6em;
+        color: #38241B;
+    }
+
+    .divider {
+        margin: 5.8333vh 0 13.888vh 0;
+        width: 100%;
+        border: 4px solid #38241B;
+        height: 9px;
+        border-left: none;
+        border-right: none;
+    }
+}

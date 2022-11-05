@@ -1,0 +1,20 @@
+<div class="level-item" [ngStyle]="{'visibility': show ? 'visible' : 'hidden'}">
+    <div class="header">
+        <h3 class="title">{{item.header}}</h3>
+        <img [src]="item.iconSrc">
+    </div>
+
+    <div class="illustration-container">
+        <img [src]="item.illustrationSrc">
+    </div>
+
+    <div class="content-container">
+        <span class="title">{{item.title}}</span>
+        <p class="content">{{item.content}}</p>
+    </div>
+
+    <div class="btn-container">
+        <button class="btn raider">關卡攻略</button>
+        <button class="btn post">投稿</button>
+    </div>
+</div>
