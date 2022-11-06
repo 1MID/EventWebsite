@@ -1,6 +1,6 @@
-import { Component, ElementRef, Renderer2, OnInit, ViewChild, AfterViewInit, HostListener, OnDestroy, Output, EventEmitter } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
-import { tap, throttleTime } from 'rxjs/operators';
+import { Component, ElementRef, Renderer2, OnInit, ViewChild, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
+import { CommonService } from 'src/app/home/service/common.service';
 
 @Component({
   selector: 'app-paper-mask',
@@ -8,27 +8,16 @@ import { tap, throttleTime } from 'rxjs/operators';
   styleUrls: ['./paper-mask.component.scss']
 })
 export class PaperMaskComponent implements OnInit, OnDestroy {
-  @Output() animateFinish = new EventEmitter<any>();
-  @Output() animateStageEmit = new EventEmitter<any>();
-
   @ViewChild("paperTop") paperTop!: ElementRef;
   @ViewChild("paperRight") paperRight!: ElementRef;
   @ViewChild("paperLeft") paperLeft!: ElementRef;
   @ViewChild("scrollDown") scrollDown!: ElementRef;
 
-  animateStage = 0;
-
   private scrollEventSub!: Subscription;
 
-  @HostListener("wheel", ["$event"])
-  public onScroll(event: any) {
-    if (this.animateStage <= 3) {
-      event.preventDefault();
-    }
-  }
-
   constructor(
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private commonService: CommonService
   ) { }
 
   ngOnInit(): void {
@@ -40,19 +29,11 @@ export class PaperMaskComponent implements OnInit, OnDestroy {
   }
 
   subscribeWheelEvent() {
-    this.scrollEventSub = fromEvent(window, 'wheel')
-      .pipe(
-        throttleTime(750),
-        tap((event: any) => { this.animateController(event) })
-      ).subscribe();
+    this.scrollEventSub = this.commonService.wheelEvent.asObservable().subscribe((e) => { this.animateController(); });
   }
 
-  animateController(scrollEvent: any) {
-    if (scrollEvent.wheelDelta > 0) { return; }
-    this.animateStage++;
-    this.animateStageEmit.emit(this.animateStage);
-
-    switch (this.animateStage) {
+  animateController() {
+    switch (this.commonService.getIndex()) {
       case 1:
         this.renderer.addClass(this.paperTop.nativeElement, 'top-1');
         break;
@@ -72,10 +53,7 @@ export class PaperMaskComponent implements OnInit, OnDestroy {
         this.renderer.removeClass(this.paperLeft.nativeElement, 'left-1');
         this.renderer.addClass(this.paperLeft.nativeElement, 'left-2');
 
-        setTimeout(() => {
-          this.animateFinish.emit(true);
-          this.scrollEventSub.unsubscribe();
-        }, 750);
+        setTimeout(() => { this.scrollEventSub.unsubscribe(); }, 750);
         break;
 
       default:

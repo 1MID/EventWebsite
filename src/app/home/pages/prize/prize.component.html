@@ -1,1 +1,14 @@
-<p>prize works!</p>
+<div class="prize-container">
+    <h2 class="header">獎項</h2>
+
+    <div class="prize-detail-container">
+        <img class="prize-item" [src]="prizeInfo[0].imgSrc" #prizeItem1 class="animate__animated"
+            [ngStyle]="{'visibility': prizeInfo[0].hide ? 'hidden' : 'visible'}">
+        <img class="prize-item" [src]="prizeInfo[1].imgSrc" #prizeItem2 class="animate__animated"
+            [ngStyle]="{'visibility': prizeInfo[1].hide ? 'hidden' : 'visible'}">
+        <img class="prize-item" [src]="prizeInfo[2].imgSrc" #prizeItem3 class="animate__animated"
+            [ngStyle]="{'visibility': prizeInfo[2].hide ? 'hidden' : 'visible'}">
+    </div>
+
+    <span class="finish-race-hint" id="scrollItem11">以上皆提供完賽數位獎狀</span>
+</div>

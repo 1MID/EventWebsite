@@ -1,11 +1,9 @@
 .schedule-container {
     width: 100%;
-    scroll-snap-align: start;
     display: flex;
     flex-direction: column;
     align-items: center;
     overflow-x: hidden;
-    scroll-snap-type: y mandatory;
 
     .header {
         width: 100%;
@@ -24,7 +22,6 @@
     }
 
     .info-block {
-        scroll-snap-align: center;
         margin-top: 12.777vh;
         width: 100%;
         padding: 0 2.89vw;
@@ -97,14 +94,14 @@
     }
 
     .detail-container {
-        padding: 6.111vh 2.89vw 12.777vh 2.89vw;
+        padding: 6.111vh 2.89vw 6.777vh 2.89vw;
         box-sizing: border-box;
         width: 100%;
         display: flex;
         flex-direction: column;
+        text-align: center;
 
         .detail {
-
             font-family: 'Noto Sans TC';
             font-style: normal;
             font-weight: bold;

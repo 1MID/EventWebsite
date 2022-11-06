@@ -1,0 +1,59 @@
+.footer-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+    .block-1 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 7.8125vw;
+        box-sizing: border-box;
+        height: 13.333vh;
+        background: #FFFFFF;
+
+        img {
+            transform: scale(0.7);
+        }
+    }
+
+    .block-2 {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8.3333vh 5.15625vw 2.5vh 5.15625vw;
+        box-sizing: border-box;
+        height: 50.83333vh;
+        background: #3C221B;
+
+        .title {
+            font-family: 'Noto Serif TC';
+            font-style: normal;
+            font-weight: bold;
+            font-size: 60px;
+            line-height: 86px;
+            color: #FFFFFF;
+        }
+
+        .sponser {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            img {
+                transform: scale(0.7);
+            }
+        }
+
+        .author {
+            font-family: 'Noto Sans TC';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 23px;
+            color: #FFFFFF;
+        }
+    }
+}

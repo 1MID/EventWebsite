@@ -1,24 +1,22 @@
-<div class="level-container" [ngStyle]="{'scroll-snap-align': scrollSnapAlignIsStart ? 'start' : 'end'}">
-
-    <div id="levelItem0" #levelItem0>
+<div class="level-container">
+    <div id="scrollItem6">
         <img class="hex-school" src="assets/level/hexSchool.png">
         <h2 class="sub-title">年度最強合作，三大關卡來襲</h2>
         <div class="divider"></div>
     </div>
 
-    <div id="levelItem1" #levelItem1 class="animate__animated">
-        <app-level-item [item]="levelInfo[0]" [show]="this.maxReadIndex > 0" [showScrollHint]="true">
+    <div id="scrollItem7" #scrollItem7 class="animate__animated">
+        <app-level-item [item]="levelInfo[0]" [show]="commonService.getMaxIndex() > 6" [showScrollHint]="true">
         </app-level-item>
     </div>
 
-    <div id="levelItem2" #levelItem2 class="animate__animated">
-        <app-level-item [item]="levelInfo[1]" [show]="this.maxReadIndex > 1">
+    <div id="scrollItem8" #scrollItem8 class="animate__animated">
+        <app-level-item [item]="levelInfo[1]" [show]="commonService.getMaxIndex() > 7">
         </app-level-item>
     </div>
 
-    <div id="levelItem3" #levelItem3 class="animate__animated">
-        <app-level-item [item]="levelInfo[2]" [show]="this.maxReadIndex > 2">
+    <div id="scrollItem9" #scrollItem9 class="animate__animated">
+        <app-level-item [item]="levelInfo[2]" [show]="commonService.getMaxIndex() > 8">
         </app-level-item>
     </div>
-
 </div>

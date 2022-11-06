@@ -14,6 +14,9 @@ import { LevelItemComponent } from './home/pages/level/level-item/level-item.com
 import { ScrollDownComponent } from './home/components/scroll-down/scroll-down.component';
 import { ScheduleComponent } from './home/pages/schedule/schedule.component';
 import { PrizeComponent } from './home/pages/prize/prize.component';
+import { SurpriseComponent } from './home/pages/surprise/surprise.component';
+import { MagicWandComponent } from './home/components/magic-wand/magic-wand.component';
+import { FooterComponent } from './home/components/footer/footer.component';
 
 export function playerFactory() {
   return player;
@@ -29,7 +32,10 @@ export function playerFactory() {
     LevelItemComponent,
     ScrollDownComponent,
     ScheduleComponent,
-    PrizeComponent
+    PrizeComponent,
+    SurpriseComponent,
+    MagicWandComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

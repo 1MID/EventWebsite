@@ -1,7 +1,7 @@
-<div class="schedule-container">
+<div class="schedule-container" id="scrollItem10">
     <h2 class="header">賽程時間</h2>
 
-    <div class="info-block" *ngFor="let info of blockInfo;">
+    <div class="info-block" *ngFor="let info of scheduleInfo.blockInfo; let index = index;">
         <div class="item" *ngFor="let item of info;let last = last;">
             <span class="title">{{item.title}}</span>
             <div class="rhombus" [ngClass]="{'red' : item.isFocus}">
@@ -12,7 +12,6 @@
     </div>
 
     <div class="detail-container">
-        <p class="detail" *ngFor="let detail of details;">{{detail}}</p>
+        <p class="detail" *ngFor="let detail of scheduleInfo.details;">{{detail}}</p>
     </div>
-
 </div>

@@ -1,5 +1,7 @@
 import { Component, ElementRef, OnInit, Renderer2, ViewChild } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { CommonService } from '../../service/common.service';
+import { onBoardConfig } from './on-board.config';
 
 @Component({
   selector: 'app-on-board',
@@ -8,35 +10,33 @@ import { CommonService } from '../../service/common.service';
 })
 export class OnBoardComponent implements OnInit {
   @ViewChild("anonymous") anonymous!: ElementRef;
-
-  title = "THE F2E"
-  term = "4th";
-  content = "前端工程師和介面設計師，攜手合作拿獎金";
-  subContent = "羨慕別人的酷酷網頁動畫？滿足不了同事的許願？動畫技能樹太雜無從下手？"
-  attendInfo = [1158, 1052, 41];
-  bounty = [
-    { prize: "個人獎", reward: "$3,000" },
-    { prize: "團體獎", reward: "$10,000" }
-  ]
-
-  enabledPaperAnimate = false;
-  showCompleteBoardPage = false;
+  scrollEventSub!: Subscription;
+  boardInfo = onBoardConfig;
+  onBoardAnimateMaxStep = 4; // on-board頁動畫需4步Scroll
 
   constructor(
     private commonService: CommonService,
     private renderer: Renderer2
   ) { }
 
+  get showPaperMask() {
+    return this.commonService.getMaxIndex() <= this.onBoardAnimateMaxStep;
+  }
+
+  get showCompleteBoardPage() {
+    return this.commonService.getMaxIndex() >= this.onBoardAnimateMaxStep;
+  }
+
   ngOnInit(): void {
-    this.initAnimate();
+    this.subscribeWheelEvent();
   }
 
-  initAnimate() {
-    this.enabledPaperAnimate = true;
+  subscribeWheelEvent() {
+    this.scrollEventSub = this.commonService.wheelEvent.asObservable().subscribe((e) => { this.animateController(); });
   }
 
-  getMaskStage(stage: number) {
-    switch (stage) {
+  animateController() {
+    switch (this.commonService.getIndex()) {
       case 2:
         this.renderer.addClass(this.anonymous.nativeElement, 'anonymous-1');
         break;
@@ -47,11 +47,5 @@ export class OnBoardComponent implements OnInit {
       default:
         break;
     }
-  }
-
-  paperAnimateFinish() {
-    this.enabledPaperAnimate = false;
-    this.showCompleteBoardPage = true;
-    this.commonService.setStatus('onBoardLeave');
   }
 }

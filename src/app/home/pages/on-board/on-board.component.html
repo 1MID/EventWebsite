@@ -1,23 +1,23 @@
-<div class="on-board-container">
+<div class="on-board-container" id="scrollItem0">
     <div class="onboard-content-bg">
         <div class="content">
 
             <!-- 標題 -->
             <div class="subject">
-                <h1 class="title">{{title}}</h1>
-                <div class="term">{{term}}</div>
+                <h1 class="title">{{boardInfo.title}}</h1>
+                <div class="term">{{boardInfo.term}}</div>
             </div>
 
             <!-- 內文 -->
             <div class="content-container">
-                <p class="content">{{content}}</p>
-                <p class="sub-content">{{subContent}}</p>
+                <p class="content">{{boardInfo.content}}</p>
+                <p class="sub-content">{{boardInfo.subContent}}</p>
             </div>
 
             <!-- 匿名者 -->
             <div class="anonymous" #anonymous>
                 <div class="bounty-relative">
-                    <div class="bounty-block" *ngFor="let info of bounty">
+                    <div class="bounty-block" *ngFor="let info of boardInfo.bounty">
                         <span class="prize">{{info.prize}}</span>
                         <span class="reward">{{info.reward}}</span>
                     </div>
@@ -29,7 +29,7 @@
 
             <!-- 報名人數 -->
             <div class="attend-info-container">
-                <span *ngFor="let info of attendInfo" class="attend-info">
+                <span *ngFor="let info of boardInfo.attendInfo" class="attend-info">
                     報名總人數 <span class="attend-count">{{info}}</span> 人
                 </span>
             </div>
@@ -39,6 +39,5 @@
         </div>
     </div>
 </div>
-
-<app-paper-mask *ngIf="enabledPaperAnimate" (animateFinish)="paperAnimateFinish()"
-    (animateStageEmit)="getMaskStage($event)"></app-paper-mask>
+<div id="scrollItem5"></div>
+<app-paper-mask *ngIf="showPaperMask"></app-paper-mask>

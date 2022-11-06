@@ -1,0 +1,47 @@
+.prize-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+
+    .header {
+        width: 100%;
+        height: 23.6111vh;
+        background: #3C221B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: 'Noto Serif TC';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 60px;
+        line-height: 86px;
+        color: #FFFFFF;
+    }
+
+    .prize-detail-container {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: space-between;
+        margin: 10.5vh 0;
+
+        .prize-item {
+            display: flex;
+            flex-direction: column;
+            width: 30.156vw;
+        }
+    }
+
+    .finish-race-hint {
+        font-family: 'Noto Sans TC';
+        font-style: normal;
+        font-weight: bold;
+        font-size: 36px;
+        line-height: 52px;
+        text-align: center;
+        color: #3C221B;
+    }
+}
