@@ -6,7 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  navItem: string[] = ['關卡任務', '競賽說明']
+  navItem = [
+    { title: '關卡任務', href: 'https://2022.thef2e.com/news' },
+    { title: '競賽說明', href: 'https://2022.thef2e.com/news/week1' }
+  ]
 
   constructor() { }
 

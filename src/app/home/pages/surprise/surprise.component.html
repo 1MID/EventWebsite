@@ -1,4 +1,45 @@
-<div class="unreveal-container" id="scrollItem12">
-    <img src="assets/surprise/text.png" class="surprise-text">
-    <app-magic-wand class="magic-wand"></app-magic-wand>
+<div class="surprise-container">
+
+    <div *ngIf="!showUnrevealed" class="unreveal-container" id="scrollItem12" (click)="showUnrevealedInfo()">
+        <img src="assets/surprise/text.png" class="surprise-text">
+        <app-magic-wand class="magic-wand"></app-magic-wand>
+    </div>
+
+    <ng-container *ngIf="showUnrevealed">
+        <h2 class="header animate__animated animate__fadeIn animate__slow">各界大神直播分享</h2>
+
+        <div class="reveal-container">
+            <a href="https://www.youtube.com/watch?v=9gzDFKTIFB4" target="_blank" rel="noopener noreferrer">
+                <div id="scrollItem13" #scrollItem13 class="mogul animate__animated"
+                    style="background-image: url('assets/surprise/1.gif'); transform: scale(0.89);">
+                    <h3 class="title">網頁的動態趨勢</h3>
+                    <div class="name">李明<br />版塊設計創辦人兼總監</div>
+                    <span class="date">11/03(四)20:00 ~ 21:30</span>
+                </div>
+            </a>
+
+            <div #scrollItem14 class="mogul animate__animated"
+                style="background-image: url('assets/surprise/2.gif'); transform: scale(0.89);">
+                <h3 class="title">jQuery 也可以做到的互動效果</h3>
+                <div class="name">Leo<br />Angular Taiwan 傳教士</div>
+                <span class="date">11/03(四)20:00 ~ 21:30</span>
+            </div>
+
+            <div id="scrollItem15" #scrollItem15 class="mogul animate__animated"
+                style="background-image: url('assets/surprise/3.gif'); transform: scale(0.89);">
+                <h3 class="title">網頁可以拖拖拉拉draggable.js 介紹</h3>
+                <div class="name">邱繼緯<br />前端工程師</div>
+                <span class="date">11/17(四)20:00 ~ 21:30</span>
+            </div>
+
+            <div #scrollItem16 class="mogul animate__animated"
+                style="background-image: url('assets/surprise/4.gif'); transform: scale(0.89);">
+                <h3 class="title">互動式網頁設計工程師該具備哪些技能？</h3>
+                <div class="name">吳哲宇<br>墨雨互動設計創辦人</div>
+                <span class="date">11/24(四)20:00 ~ 21:30</span>
+            </div>
+        </div>
+    </ng-container>
+
+    <app-footer></app-footer>
 </div>

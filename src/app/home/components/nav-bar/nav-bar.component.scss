@@ -2,7 +2,7 @@
     z-index: 2;
     position: absolute;
     top: 0;
-    width: 100%;
+    width: calc(100% - 6px);
     background: #38241B;
     height: 8.6111vh;
     display: flex;
@@ -28,6 +28,8 @@
             line-height: 26px;
             color: #FFFFFF;
             margin-left: 2.8125vw;
+
+            text-decoration: none;
         }
 
         .sign-up {
@@ -43,6 +45,27 @@
             font-size: 20px;
             border: none;
             margin-left: 1.171vw;
+
+
+            &:hover {
+                animation: zoom-effect 1.3s infinite;
+                -webkit-animation-timing-function: linear;
+                animation-timing-function: linear;
+            }
         }
+    }
+}
+
+@keyframes zoom-effect {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+
+    100% {
+        transform: scale(1);
     }
 }

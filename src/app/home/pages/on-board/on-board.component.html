@@ -30,7 +30,7 @@
             <!-- 報名人數 -->
             <div class="attend-info-container">
                 <span *ngFor="let info of boardInfo.attendInfo" class="attend-info">
-                    報名總人數 <span class="attend-count">{{info}}</span> 人
+                    {{info.title}} <span class="attend-count">{{info.count}}</span> 人
                 </span>
             </div>
 

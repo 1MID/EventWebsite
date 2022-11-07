@@ -135,3 +135,32 @@ table {
     border-collapse: collapse;
     border-spacing: 0;
 }
+
+
+// custom
+
+body {
+    cursor: url('./assets/common/cursor.png'), auto;
+    overflow-x: hidden;
+}
+
+a,
+button {
+    cursor: url('./assets/common/cursor.png'), auto;
+}
+
+//scroll-bar
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #38241B;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #951205;
+    border-radius: 20px;
+}

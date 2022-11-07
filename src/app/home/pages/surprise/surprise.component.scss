@@ -1,24 +1,120 @@
-.unreveal-container {
+.surprise-container {
     width: 100%;
     height: 100%;
-    display: flex;
-    align-items: center;
-    overflow-x: hidden;
-    position: relative;
-    cursor: pointer;
 
-    .surprise-text {
-        position: absolute;
-        left: 50%;
-        top: 50%;
-        transform: translate(-50%, -50%);
+    .unreveal-container {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        overflow-x: hidden;
+        position: relative;
+
+
+        .surprise-text {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .magic-wand {
+            position: absolute;
+            left: 65%;
+            top: 65%;
+            transform: translate(-50%, -50%);
+        }
+
     }
 
-    .magic-wand {
-        position: absolute;
-        left: 65%;
-        top: 65%;
-        transform: translate(-50%, -50%);
+    .header {
+        width: 100%;
+        height: 23.6111vh;
+        background: #3C221B;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        font-family: 'Noto Serif TC';
+        font-style: normal;
+        font-weight: 900;
+        font-size: 60px;
+        line-height: 86px;
+        color: #FFFFFF;
     }
 
+    .reveal-container {
+        display: flex;
+        flex-direction: row;
+        padding: 8.75vh 3vw;
+        box-sizing: border-box;
+        flex-wrap: wrap;
+        justify-content: space-around;
+
+        .mogul {
+            position: relative;
+            width: 522px;
+            height: 738.5px;
+            margin: 2.5vh 0;
+            visibility: hidden;
+
+            .title {
+                width: 100%;
+                padding: 0 5%;
+                box-sizing: border-box;
+                position: absolute;
+                top: 20px;
+                height: 117px;
+
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Noto Serif TC';
+                font-style: normal;
+                font-weight: 900;
+                font-size: 49px;
+                line-height: 62px;
+                text-align: center;
+                color: #000000;
+            }
+
+            .name {
+                position: absolute;
+                bottom: 89.5px;
+                left: 50%;
+                transform: translate(-50%, 0);
+                width: 259px;
+                height: 66px;
+                background-image: url('../../../../assets/surprise/name-bg.png');
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                font-family: 'Noto Sans TC';
+                font-style: normal;
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 26px;
+                text-align: center;
+                color: #FFFFFF;
+            }
+
+            .date {
+                position: absolute;
+                bottom: 27.76px;
+                width: 100%;
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 900;
+                font-size: 35px;
+                line-height: 67px;
+                text-align: center;
+                color: #38241B;
+            }
+        }
+    }
+}
+
+.show-card {
+    visibility: visible !important;
 }

@@ -41,8 +41,8 @@ export class PrizeComponent implements OnInit {
   scrollEventHandler() {
     if (this.commonService.isFirstTimeHere() && this.commonService.getIndex() === 11) {
       this.renderer.addClass(this.prizeItem1.nativeElement, 'animate__fadeInDownBig'); this.prizeInfo[0].hide = false;
-      setTimeout(() => { this.renderer.addClass(this.prizeItem2.nativeElement, 'animate__fadeInDownBig'); this.prizeInfo[1].hide = false; }, 250);
-      setTimeout(() => { this.renderer.addClass(this.prizeItem3.nativeElement, 'animate__fadeInDownBig'); this.prizeInfo[2].hide = false; }, 500);
+      setTimeout(() => { this.renderer.addClass(this.prizeItem2.nativeElement, 'animate__fadeInDownBig'); this.prizeInfo[1].hide = false; }, 200);
+      setTimeout(() => { this.renderer.addClass(this.prizeItem3.nativeElement, 'animate__fadeInDownBig'); this.prizeInfo[2].hide = false; }, 400);
     }
   }
 

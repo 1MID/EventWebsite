@@ -1,7 +1,8 @@
 import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
-import { fromEvent, Subscription } from 'rxjs';
-import { tap, throttleTime } from 'rxjs/operators';
+import { fromEvent, Subscription, interval } from 'rxjs';
+import { tap, throttleTime, throttle } from 'rxjs/operators';
 import { CommonService } from './service/common.service';
+import { MouseEffectService } from './service/mouse-effect.service';
 
 @Component({
   selector: 'app-home',
@@ -10,42 +11,38 @@ import { CommonService } from './service/common.service';
 })
 export class HomeComponent implements OnInit, OnDestroy {
   private scrollEventSub!: Subscription;
+  trails: any = [];
 
   @HostListener("wheel", ["$event"])
   public onScroll(event: any) {
-    event.preventDefault();
+    if (this.commonService.disabledWheelEvent) { event.preventDefault(); }
   }
 
-  constructor(private commonService: CommonService) { }
+  constructor(
+    private commonService: CommonService,
+    private mouseEffectService: MouseEffectService
+  ) { }
 
   ngOnInit(): void {
-    this.subscribeWheelEvent();
+    this.scrollEventSub = this.getWheelEvent().subscribe();
+    this.mouseEffectService.init();
   }
 
   ngOnDestroy(): void {
     this.scrollEventSub?.unsubscribe();
+    this.mouseEffectService.destroy();
   }
 
-  subscribeWheelEvent(throttle: number = 750) {
-    this.scrollEventSub?.unsubscribe();
-    this.scrollEventSub = fromEvent(window, 'wheel')
+  private getWheelEvent() {
+    return fromEvent(window, 'wheel')
       .pipe(
-        throttleTime(throttle),
+        throttle(() => this.commonService.getMaxIndex() > 11 ? interval(400) : interval(750)), // speed up
         tap((event: any) => {
-          this.adjustmentIndex(event);
-          this.scrollToCurElement()
+          event.wheelDelta < 0 ? this.commonService.increaseIndex() : this.commonService.decreaseIndex();
+          this.commonService.scrollToCurElement(); // 如果這個只交由Service控制則無法操縱throttle time
         })
-      ).subscribe();
+      )
   }
 
-  private adjustmentIndex(event: any) {
-    event.wheelDelta < 0 ? this.commonService.increaseIndex() : this.commonService.decreaseIndex();
-  }
-
-  private scrollToCurElement() {
-    console.log('當前索引', this.commonService.getIndex())
-    const el = document.getElementById('scrollItem' + this.commonService.getIndex());
-    el?.scrollIntoView({ behavior: 'smooth', block: 'end' })
-  }
 
 }

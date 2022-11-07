@@ -1,9 +1,15 @@
 <nav class="nav-bar-container">
-    <img class="logo" src="assets/hex-logo.png">
+    <a href="https://www.hexschool.com/" target="_blank" rel="noopener noreferrer">
+        <img class="logo" src="assets/hex-logo.png">
+    </a>
 
     <div class="nav-item-container">
-        <a *ngFor="let item of navItem" class="nav-item">{{item}} </a>
-        <button class="sign-up">立即報名</button>
+        <a *ngFor="let item of navItem" class="nav-item" [href]="item.href" target="_blank"
+            rel="noopener noreferrer">{{item.title}} </a>
+
+        <a href="https://2022.thef2e.com/signup" target="_blank" rel="noopener noreferrer">
+            <button class="sign-up">立即報名</button>
+        </a>
     </div>
 
 </nav>
