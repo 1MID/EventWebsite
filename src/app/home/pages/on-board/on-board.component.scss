@@ -32,8 +32,8 @@
                     font-family: 'EB Garamond', serif;
                     font-style: normal;
                     font-weight: bold;
-                    font-size: 80px;
-                    line-height: 90px;
+                    font-size: 6.25vw;
+                    line-height: 7vw;
                     color: #38241B;
                 }
 
@@ -42,16 +42,16 @@
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    width: 109px;
-                    height: 46px;
+                    width: 8.515vw;
+                    height: 3.593vw;
                     background: #951205;
                     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
                     border-radius: 14px;
 
                     font-family: 'EB Garamond', serif;
                     font-weight: 700;
-                    font-size: 32px;
-                    line-height: 46px;
+                    font-size: 2.96vw;
+                    line-height: 3.59375vw;
                     color: #FFFFFF;
                 }
 
@@ -60,30 +60,29 @@
 
             .content-container {
                 position: absolute;
-                top: 24.583vh;
+                top: 15vw;
                 left: 4.14vw;
                 display: flex;
                 flex-direction: column;
                 gap: 2.08333vh;
 
                 .content {
-
-                    max-width: 343px;
+                    max-width: 25vw;
                     font-family: 'Noto Serif TC';
                     font-style: normal;
                     font-weight: 900;
-                    font-size: 42px;
-                    line-height: 60px;
+                    font-size: 3.28125vw;
+                    line-height: 5vw;
                     color: #38241B;
                 }
 
                 .sub-content {
-                    max-width: 270px;
                     font-family: 'Noto Sans TC';
                     font-style: normal;
-                    font-weight: 400;
-                    font-size: 24px;
-                    line-height: 35px;
+                    font-weight: bold;
+                    font-size: 1.875vw;
+                    line-height: 2.73vw;
+                    width: 22vw;
 
                     color: #38241B;
                 }
@@ -95,7 +94,7 @@
                 left: 55%;
                 transform: translate(-50%, 0);
                 width: 49.375vw;
-                height: 73.472vh;
+                height: 41.276vw;
                 background-image: url('../../../../assets/onboard/anonymous.png');
                 background-size: contain;
                 background-repeat: no-repeat;
@@ -118,8 +117,8 @@
                     .bounty-block {
                         .prize {
                             font-family: 'AR JULIAN';
-                            font-size: 28px;
-                            line-height: 31px;
+                            font-size: 2.1875vw;
+                            line-height: 2.421875vw;
                             color: #FFFFFF;
                         }
 
@@ -127,8 +126,8 @@
                             font-family: 'EB Garamond', serif;
                             font-style: normal;
                             font-weight: bold;
-                            font-size: 48px;
-                            line-height: 54px;
+                            font-size: 3.75vw;
+                            line-height: 4.21875vw;
                             color: #951205;
                         }
                     }
@@ -149,8 +148,8 @@
 
             .attend-info-container {
                 position: absolute;
-                top: 28.75vh;
-                right: 4.14vw;
+                top: 18vw;
+                right: 3vw;
                 display: flex;
                 flex-direction: column;
                 gap: 3.2vh;
@@ -158,9 +157,8 @@
                 .attend-info {
                     font-family: 'AR JULIAN';
                     font-style: normal;
-                    font-weight: bold;
-                    font-size: 28px;
-                    line-height: 31px;
+                    font-size: 2.7875vw;
+                    line-height: 3.421875vw;
                     color: #38241B;
 
                     .attend-count {
@@ -168,15 +166,19 @@
                         text-align: end;
                         width: 8.5156vw;
                         font-family: 'EB Garamond', serif;
-                        font-size: 42px;
+                        font-size: 4.28125vw;
+                        font-weight: bold;
                     }
                 }
             }
 
             .scroll-down {
                 position: absolute;
+                object-fit: contain;
+                width: 5vw;
+                height: 7.89vw;
                 right: 4.9vw;
-                bottom: 6.9444vh;
+                bottom: 1.75vw;
             }
         }
     }
