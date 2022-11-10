@@ -30,6 +30,11 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.touchStartY = event.targetTouches[0].clientY;
   }
 
+  @HostListener('window:resize', ['$event'])
+  public onResize(event: any) {
+    this.commonService.scrollToCurElement();
+  }
+
   constructor(
     private commonService: CommonService,
     private mouseEffectService: MouseEffectService
@@ -50,7 +55,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   private getWheelEvent() {
     return fromEvent(window, 'wheel')
       .pipe(
-        throttle(() => this.commonService.getMaxIndex() > 11 ? interval(400) : interval(750)), // speed up
+        throttle(() =>
+          this.commonService.getMaxIndex() > 15 ? interval(100)
+            : this.commonService.getMaxIndex() > 11 ? interval(400) : interval(750)
+        ), // speed up
         tap((event: any) => {
           event.wheelDelta < 0 ? this.commonService.increaseIndex() : this.commonService.decreaseIndex();
           this.commonService.scrollToCurElement(); // 如果這個只交由Service控制則無法操縱throttle time

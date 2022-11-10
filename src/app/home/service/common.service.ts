@@ -11,11 +11,13 @@ export class CommonService {
   public disabledWheelEvent = true; // 禁用原始滑動，!!正式版為true!!
   private _index: number = 0; // 當前索引，!!正式版起始值為0!!
   private _maxIndexBeen: number = 0; // 曾到過的最大索引
+  private _surpriseCardFinish = false;
 
   constructor() { }
 
   increaseIndex() {
-    if (this._index + 1 > 17) { return };
+    if ((this._index + 1 > 12) && !this._surpriseCardFinish) { return }; // 未跑完surprise卡片
+    if (this._index + 1 > 17) { return }; // 超過最大索引
     this._index++;
     this._maxIndexBeen = Math.max(this._index, this._maxIndexBeen);
     this.wheelEvent.next(this.getIndex());
@@ -56,6 +58,10 @@ export class CommonService {
     const eleHeight = el.nativeElement.getBoundingClientRect().height;
     const halfEleHeight = eleHeight / 2;
     return (distance > -halfEleHeight) && (distance < eleHeight);
+  }
+
+  surpriseCardFinish() {
+    this._surpriseCardFinish = true;
   }
 
 }

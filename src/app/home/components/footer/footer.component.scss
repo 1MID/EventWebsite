@@ -10,11 +10,13 @@
         align-items: center;
         padding: 0 7.8125vw;
         box-sizing: border-box;
-        height: 13.333vh;
+        height: 6.5vw;
         background: #FFFFFF;
+        width: 100%;
 
         img {
-            transform: scale(0.7);
+            width: 20%;
+            object-fit: contain;
         }
     }
 
@@ -23,36 +25,42 @@
         flex-direction: column;
         justify-content: space-between;
         align-items: center;
-        padding: 8.3333vh 5.15625vw 2.5vh 5.15625vw;
+        padding: 7vw 5.15625vw 28.5vw 5.15625vw;
         box-sizing: border-box;
-        height: 50.83333vh;
+        height: 20vw;
         background: #3C221B;
+        position: relative;
 
         .title {
+            margin-bottom: 3vw;
             font-family: 'Noto Serif TC';
             font-style: normal;
             font-weight: bold;
-            font-size: 60px;
-            line-height: 86px;
+            font-size: 4.6875vw;
+            font-size: 6.718vw;
             color: #FFFFFF;
         }
 
-        .sponser {
+        .sponsor {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            width: 100%;
 
             img {
-                transform: scale(0.7);
+                width: 26%;
+                object-fit: contain;
             }
         }
 
         .author {
+            position: absolute;
+            bottom: 3vw;
             font-family: 'Noto Sans TC';
             font-style: normal;
             font-weight: 400;
-            font-size: 16px;
-            line-height: 23px;
+            font-size: 1.25vw;
+            line-height: 1.8vw;
             color: #FFFFFF;
         }
     }

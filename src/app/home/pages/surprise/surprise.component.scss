@@ -29,7 +29,7 @@
 
     .header {
         width: 100%;
-        height: 23.6111vh;
+        height: 13.28125vw;
         background: #3C221B;
         display: flex;
         align-items: center;
@@ -38,8 +38,8 @@
         font-family: 'Noto Serif TC';
         font-style: normal;
         font-weight: 900;
-        font-size: 60px;
-        line-height: 86px;
+        font-size: 4.6875vw;
+        font-size: 6.718vw;
         color: #FFFFFF;
     }
 
@@ -53,8 +53,9 @@
 
         .mogul {
             position: relative;
-            width: 522px;
-            height: 738.5px;
+            width: 40.78125vw;
+            height: 57.6953vw;
+            background-size: contain;
             margin: 2.5vh 0;
             visibility: hidden;
 
@@ -63,8 +64,8 @@
                 padding: 0 5%;
                 box-sizing: border-box;
                 position: absolute;
-                top: 20px;
-                height: 117px;
+                top: 1.5625vw;
+                height: 10vw;
 
                 display: flex;
                 align-items: center;
@@ -72,8 +73,8 @@
                 font-family: 'Noto Serif TC';
                 font-style: normal;
                 font-weight: 900;
-                font-size: 49px;
-                line-height: 62px;
+                font-size: 3.828vw;
+                line-height: 4.843vw;
                 text-align: center;
                 color: #000000;
             }
@@ -83,8 +84,8 @@
                 bottom: 89.5px;
                 left: 50%;
                 transform: translate(-50%, 0);
-                width: 259px;
-                height: 66px;
+                width: 20.234vw;
+                height: 5.15vw;
                 background-image: url('../../../../assets/surprise/name-bg.png');
                 display: flex;
                 align-items: center;
@@ -93,21 +94,21 @@
                 font-family: 'Noto Sans TC';
                 font-style: normal;
                 font-weight: 700;
-                font-size: 20px;
-                line-height: 26px;
+                font-size: 1.5625vw;
+                line-height: 2.3125vw;
                 text-align: center;
                 color: #FFFFFF;
             }
 
             .date {
                 position: absolute;
-                bottom: 27.76px;
+                bottom: 1.5vw;
                 width: 100%;
                 font-family: 'Roboto';
                 font-style: normal;
                 font-weight: 900;
-                font-size: 35px;
-                line-height: 67px;
+                font-size: 2.734vw;
+                line-height: 5.234vw;
                 text-align: center;
                 color: #38241B;
             }

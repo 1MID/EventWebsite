@@ -9,17 +9,18 @@
 
 
     .hex-school {
-        width: 590px;
-        height: 146.83px;
+        width: 100%;
+        height: 12vw;
+        object-fit: contain;
     }
 
     .sub-title {
-        margin-top: 5.8333vh;
+        margin-top: 4vw;
         font-family: 'Noto Sans TC';
         font-style: normal;
         font-weight: bold;
-        font-size: 43px;
-        line-height: 62px;
+        font-size: 3.359vw;
+        line-height: 4.843vw;
         text-align: center;
         letter-spacing: 0.6em;
         color: #38241B;

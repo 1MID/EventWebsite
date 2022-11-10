@@ -51,9 +51,8 @@ export class SurpriseComponent implements OnInit {
       this.renderer.addClass(this.scrollItem16.nativeElement, 'animate__slow');
       this.renderer.addClass(this.scrollItem16.nativeElement, 'show-card');
       this.commonService.scrollToTargetIndex(16);
+      this.commonService.surpriseCardFinish();
     }, 2000);
 
-
   }
-
 }
