@@ -16,6 +16,13 @@ export class LevelComponent implements OnInit, OnDestroy {
 
   levelInfo = levelInfoConfig
   private scrollEventSub!: Subscription;
+  private touchEventSub!: Subscription;
+
+  touchMode = {
+    showItem7: false,
+    showItem8: false,
+    showItem9: false
+  }
 
   constructor(
     private renderer: Renderer2,
@@ -24,14 +31,21 @@ export class LevelComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscribeWheelEvent();
+    this.subscribeTouchEvent();
   }
 
   ngOnDestroy(): void {
     this.scrollEventSub.unsubscribe();
+    this.touchEventSub.unsubscribe();
   }
 
   subscribeWheelEvent() {
     this.scrollEventSub = this.commonService.wheelEvent.asObservable().subscribe((e) => { this.scrollEventHandler(); });
+  }
+
+  subscribeTouchEvent() {
+    this.touchEventSub = fromEvent(window, 'touchmove').pipe(tap(() => { this.scrollEventHandler(); }))
+      .subscribe(() => this.touchEventHandler())
   }
 
   scrollEventHandler() {
@@ -39,6 +53,12 @@ export class LevelComponent implements OnInit, OnDestroy {
     if (this.commonService.isFirstTimeHere() && this.commonService.getIndex() === 7) { this.showItem1Animate(); }
     else if (this.commonService.isFirstTimeHere() && this.commonService.getIndex() === 8) { this.showItem2Animate(); }
     else if (this.commonService.isFirstTimeHere() && this.commonService.getIndex() === 9) { this.showItem3Animate(); }
+  }
+
+  touchEventHandler() {
+    if (this.commonService.thisElementInScreen(this.scrollItem7)) { this.showItem1Animate(); this.touchMode.showItem7 = true; }
+    if (this.commonService.thisElementInScreen(this.scrollItem8)) { this.showItem2Animate(); this.touchMode.showItem8 = true; }
+    if (this.commonService.thisElementInScreen(this.scrollItem9)) { this.showItem3Animate(); this.touchMode.showItem9 = true; }
   }
 
   private showItem1Animate() {

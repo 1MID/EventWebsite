@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ElementRef, Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
 @Injectable({
@@ -50,4 +50,12 @@ export class CommonService {
     const el = document.getElementById('scrollItem' + this.getIndex());
     el?.scrollIntoView({ behavior: 'smooth', block: 'end' })
   }
+
+  thisElementInScreen(el: ElementRef) {
+    const distance = el.nativeElement.getBoundingClientRect().top;
+    const eleHeight = el.nativeElement.getBoundingClientRect().height;
+    const halfEleHeight = eleHeight / 2;
+    return (distance > -halfEleHeight) && (distance < eleHeight);
+  }
+
 }

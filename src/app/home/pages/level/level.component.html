@@ -6,17 +6,18 @@
     </div>
 
     <div id="scrollItem7" #scrollItem7 class="animate__animated">
-        <app-level-item [item]="levelInfo[0]" [show]="commonService.getMaxIndex() > 6" [showScrollHint]="true">
+        <app-level-item [item]="levelInfo[0]" [show]="(commonService.getMaxIndex() > 6) || touchMode.showItem7"
+            [showScrollHint]="true">
         </app-level-item>
     </div>
 
     <div id="scrollItem8" #scrollItem8 class="animate__animated">
-        <app-level-item [item]="levelInfo[1]" [show]="commonService.getMaxIndex() > 7">
+        <app-level-item [item]="levelInfo[1]" [show]="(commonService.getMaxIndex() > 7) || touchMode.showItem8">
         </app-level-item>
     </div>
 
     <div id="scrollItem9" #scrollItem9 class="animate__animated">
-        <app-level-item [item]="levelInfo[2]" [show]="commonService.getMaxIndex() > 8">
+        <app-level-item [item]="levelInfo[2]" [show]="(commonService.getMaxIndex() > 8) || touchMode.showItem9">
         </app-level-item>
     </div>
 </div>
