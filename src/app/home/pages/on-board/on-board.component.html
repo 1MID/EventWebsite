@@ -36,8 +36,15 @@
 
             <!-- 向下滑動 -->
             <app-scroll-down *ngIf="showCompleteBoardPage" class="scroll-down"></app-scroll-down>
+
+            <div class="content-container-mobile">
+                <p class="content">{{boardInfo.content}}</p>
+                <p class="sub-content">{{boardInfo.subContent}}</p>
+            </div>
         </div>
     </div>
 </div>
+
+
 <div id="scrollItem5"></div>
 <app-paper-mask *ngIf="showPaperMask"></app-paper-mask>

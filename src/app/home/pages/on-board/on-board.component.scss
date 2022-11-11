@@ -180,18 +180,14 @@
                 right: 4.9vw;
                 bottom: 1.75vw;
             }
+
+            .content-container-mobile {
+                display: none;
+            }
         }
     }
 }
 
-
-.anonymous-1 {
-    animation-name: anonymous-animate-1;
-}
-
-.anonymous-2 {
-    animation-name: anonymous-animate-2;
-}
 
 
 @keyframes anonymous-animate-1 {
@@ -211,5 +207,245 @@
 
     100% {
         bottom: 0%
+    }
+}
+
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .on-board-container {
+        height: 100vh;
+
+        .onboard-content-bg {
+            background-image: url('../../../../assets/onboard/tablet/bg.png');
+            background-size: contain;
+            background-repeat: no-repeat;
+            margin-top: 6vw;
+            width: 95.833vw;
+            height: 117.26vw;
+
+            .content {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                .subject {
+                    top: 8.9444vh;
+                    left: 3.9vw;
+
+                    .title {
+                        font-size: 10.25vw;
+                        line-height: 12vw;
+                        color: #38241B;
+                    }
+
+                    .term {
+                        transform: translate(0, -60%);
+                        width: 11.515vw;
+                        height: 4.993vw;
+                        font-size: 3.96vw;
+                        line-height: 4.59375vw;
+                    }
+
+
+                }
+
+                .content-container {
+                    top: 25vw;
+
+                    .content {
+                        max-width: 75vw;
+                        font-size: 6.28125vw;
+                        line-height: 8vw;
+                    }
+
+                    .sub-content {
+                        display: none;
+                    }
+                }
+
+                .anonymous {
+                    width: 90.375vw;
+                    height: 75.276vw;
+
+                    .bounty-relative {
+                        bottom: 4vw;
+
+                        .bounty-block {
+                            .prize {
+                                font-size: 4.1875vw;
+                            }
+
+                            .reward {
+                                font-size: 6.75vw;
+                            }
+                        }
+                    }
+                }
+
+                .bounty-tag {
+                    position: absolute;
+                    right: -2.5vw;
+                    top: -3vh;
+                    object-fit: contain;
+                    width: 48.42vw;
+                }
+
+                .attend-info-container {
+                    display: none;
+                }
+
+                .scroll-down {
+                    display: none;
+                }
+
+                .content-container-mobile {
+                    display: none;
+                }
+            }
+        }
+    }
+}
+
+
+.anonymous-1 {
+    animation-name: anonymous-animate-1;
+}
+
+.anonymous-2 {
+    animation-name: anonymous-animate-2;
+}
+
+
+
+// Mobile
+@media screen and (max-width: 767px) {
+    .on-board-container {
+        height: 153vh;
+
+        .onboard-content-bg {
+            background-image: url('../../../../assets/onboard/mobile/bg.png');
+            background-size: cover;
+            background-repeat: no-repeat;
+            margin-top: 6vw;
+            width: 100vw;
+            height: 150vh;
+
+            .content {
+                position: relative;
+                width: 100%;
+                height: 100%;
+
+                .subject {
+                    top: 8.9444vh;
+                    left: 3.9vw;
+
+                    .title {
+                        font-size: 17.25vw;
+                        line-height: 12vw;
+                        color: #38241B;
+                    }
+
+                    .term {
+                        transform: translate(0, -10%);
+                        width: 20.515vw;
+                        height: 8.993vw;
+                        font-size: 7.96vw;
+                        line-height: 4.59375vw;
+                    }
+
+
+                }
+
+                .content-container {
+                    display: none;
+                }
+
+                .content-container-mobile {
+                    position: absolute;
+                    display: block;
+                    bottom: 18vw;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .content {
+                        display: block;
+                        max-width: none;
+                        font-size: 11.28125vw;
+                        line-height: 12vw;
+                        text-align: center;
+                        font-family: 'Noto Serif TC';
+                        font-style: normal;
+                        font-weight: 900;
+                        margin-bottom: 5vw;
+                        color: #38241B;
+                    }
+
+                    .sub-content {
+                        display: block;
+                        font-weight: normal;
+                        font-size: 5.875vw;
+                        line-height: 8.73vw;
+                        width: none;
+                        width: 84%;
+                    }
+                }
+
+                .anonymous {
+                    width: 114.375vw;
+                    height: 99.276vw;
+                    left: 50%;
+
+                    .bounty-relative {
+                        bottom: 9vw;
+                        justify-content: center;
+
+                        .bounty-block {
+                            .prize {
+                                font-size: 5.1875vw;
+                            }
+
+                            .reward {
+                                font-size: 7.75vw;
+                            }
+                        }
+                    }
+                }
+
+                .bounty-tag {
+                    display: none;
+                }
+
+                .attend-info-container {
+                    display: none;
+                }
+
+                .scroll-down {
+                    display: none;
+                }
+            }
+        }
+    }
+
+
+    @keyframes anonymous-animate-1 {
+        0% {
+            bottom: -100%;
+        }
+
+        100% {
+            bottom: 10%
+        }
+    }
+
+    @keyframes anonymous-animate-2 {
+        0% {
+            bottom: 10%;
+        }
+
+        100% {
+            bottom: 35%
+        }
     }
 }
