@@ -31,6 +31,8 @@
         .prize-item {
             display: flex;
             flex-direction: column;
+            width: 30.156vw;
+            object-fit: contain;
         }
     }
 
@@ -43,4 +45,70 @@
         text-align: center;
         color: #3C221B;
     }
+}
+
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .prize-container {
+
+        .header {
+            font-size: 4.6875vw;
+            font-size: 6.718vw;
+        }
+
+        .prize-detail-container {
+            flex-direction: row;
+            width: 110%;
+            flex-wrap: wrap;
+            justify-content: center;
+
+            .prize-item {
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                width: 20% !important;
+            }
+        }
+
+        .finish-race-hint {
+            font-size: 7.8125vw;
+            line-height: 13.0625vw;
+            margin-top: 10vw;
+        }
+    }
+
+}
+
+
+
+// Mobile
+@media screen and (max-width: 767px) {
+    .prize-container {
+
+        .header {
+            font-size: 4.6875vw;
+            font-size: 6.718vw;
+        }
+
+        .prize-detail-container {
+            justify-content: center;
+            flex-direction: column-reverse;
+            padding: 0 10vw;
+            box-sizing: border-box;
+
+            .prize-item {
+                display: flex;
+                flex-direction: column;
+                width: 75vw !important;
+            }
+        }
+
+        .finish-race-hint {
+            font-size: 7.8125vw;
+            line-height: 13.0625vw;
+            margin-top: 10vw;
+        }
+    }
+
 }

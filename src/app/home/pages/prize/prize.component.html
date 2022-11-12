@@ -3,14 +3,11 @@
 
     <div class="prize-detail-container">
         <img class="prize-item" [src]="prizeInfo[0].imgSrc" #prizeItem1 class="animate__animated"
-            [ngStyle]="{'visibility': prizeInfo[0].hide && !touchMode.prizeItem1 ? 'hidden' : 'visible'}"
-            style="width: 30.156vw;  object-fit: contain;">
+            [ngStyle]="{'visibility': prizeInfo[0].hide && !touchMode.prizeItem1 ? 'hidden' : 'visible'}">
         <img class="prize-item" [src]="prizeInfo[1].imgSrc" #prizeItem2 class="animate__animated"
-            [ngStyle]="{'visibility': prizeInfo[1].hide && !touchMode.prizeItem2 ? 'hidden' : 'visible'}"
-            style="width: 30.156vw;  object-fit: contain;">
+            [ngStyle]="{'visibility': prizeInfo[1].hide && !touchMode.prizeItem2 ? 'hidden' : 'visible'}">
         <img class="prize-item" [src]="prizeInfo[2].imgSrc" #prizeItem3 class="animate__animated"
-            [ngStyle]="{'visibility': prizeInfo[2].hide && !touchMode.prizeItem3 ? 'hidden' : 'visible'}"
-            style="width: 30.156vw;  object-fit: contain;">
+            [ngStyle]="{'visibility': prizeInfo[2].hide && !touchMode.prizeItem3 ? 'hidden' : 'visible'}">
     </div>
 
     <span class="finish-race-hint" id="scrollItem11">以上皆提供完賽數位獎狀</span>
