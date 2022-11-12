@@ -1,7 +1,7 @@
 <nav class="nav-bar-container">
     <a href="https://www.hexschool.com/" target="_blank" rel="noopener noreferrer">
         <img class="logo" src="assets/hex-logo.png">
-        <img class="menu" src="assets/common/menu.png">
+        <img class="menu" [src]="menuImgSrc" (click)="menuOnClick($event)">
     </a>
 
     <div class="nav-item-container">
@@ -12,5 +12,9 @@
             <button class="sign-up">立即報名</button>
         </a>
     </div>
-
 </nav>
+
+<div class="show-menu animate__animated" [ngStyle]="{'visibility': showMenu ? 'visible' : 'hidden'}" #menu>
+    <a href="https://2022.thef2e.com/news" target="_blank" rel="noopener noreferrer"><span>關卡任務</span> </a>
+    <a href="https://2022.thef2e.com/" target="_blank" rel="noopener noreferrer"><span>競賽說明</span> </a>
+</div>
