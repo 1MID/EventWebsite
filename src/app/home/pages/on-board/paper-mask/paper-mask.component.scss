@@ -120,3 +120,65 @@
         bottom: -183%;
     }
 }
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .paper-mask-container {
+
+        .paper {
+
+            &.top {
+                width: 177vw;
+                height: 75vh;
+                object-fit: contain;
+            }
+
+            &.left {
+                width: 93.59vw;
+                height: 203.94vh;
+                object-fit: contain;
+            }
+
+            &.right {
+                width: 127.156vw;
+                height: 230vh;
+                object-fit: contain;
+            }
+        }
+
+        .scroll-down {}
+    }
+
+}
+
+
+
+// Mobile
+@media screen and (max-width: 767px) {
+    .paper-mask-container {
+
+        .paper {
+
+            &.top {
+                width: 252vw;
+                height: 80vh;
+                object-fit: contain;
+            }
+
+            &.left {
+                width: 126.59vw;
+                height: 214.94vh;
+                object-fit: contain;
+            }
+
+            &.right {
+                width: 171.156vw;
+                height: 217vh;
+                object-fit: contain;
+            }
+        }
+
+        .scroll-down {}
+    }
+
+}
