@@ -9,7 +9,7 @@ export class CommonService {
   public wheelEvent = new Subject();
 
   public disabledWheelEvent = true; // 禁用原始滑動  !!正式版為true!!
-  private _index: number = 9; // 當前索引  !!正式版起始值為0!!
+  private _index: number = 0; // 當前索引  !!正式版起始值為0!!
   private _maxIndexBeen: number = 0; // 曾到過的最大索引
   private _surpriseCardFinish = false;
 
