@@ -56,6 +56,7 @@
             width: 40.78125vw;
             height: 57.6953vw;
             background-size: contain;
+            background-repeat: no-repeat;
             margin: 2.5vh 0;
             visibility: hidden;
 
@@ -118,4 +119,104 @@
 
 .show-card {
     visibility: visible !important;
+}
+
+
+// Tablet
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .surprise-container {
+
+        .unreveal-container {
+            justify-content: center;
+
+            .surprise-text {
+                width: 90%;
+            }
+
+            .magic-wand {}
+
+        }
+
+        .header {}
+
+        .reveal-container {
+            padding: 0.75vh 3vw;
+
+            .mogul {
+                margin: 0;
+
+                .title {
+                    top: 2.0625vw;
+                    font-size: 3.828vw;
+                    line-height: 4.843vw;
+                }
+
+                .name {
+                    bottom: 6vw;
+                    font-size: 2vw;
+                    line-height: 4vw;
+                    width: 21vw;
+                    padding: 1vw 1vw;
+                }
+
+                .date {
+                    bottom: 1.5vw;
+                    font-size: 2.734vw;
+                    line-height: 2.234vw;
+                }
+            }
+        }
+    }
+}
+
+
+
+// Mobile
+@media screen and (max-width: 767px) {
+    .surprise-container {
+
+        .unreveal-container {
+            justify-content: center;
+
+            .surprise-text {
+                width: 90%;
+            }
+
+            .magic-wand {}
+
+        }
+
+        .header {}
+
+        .reveal-container {
+            padding: 0.75vh 3vw;
+
+            .mogul {
+                width: 90.78125vw;
+                height: 128.6953vw;
+                margin: 0;
+
+                .title {
+                    top: 8.5625vw;
+                    font-size: 7.828vw;
+                    line-height: 7.843vw;
+                }
+
+                .name {
+                    bottom: 15vw;
+                    font-size: 4vw;
+                    line-height: 6vw;
+                    width: 46vw;
+                    padding: 1vw;
+                    height: auto;
+                }
+
+                .date {
+                    bottom: 5.5vw;
+                    font-size: 4.734vw;
+                    line-height: 4.234vw;
+                }
+            }
+        }
+    }
 }
