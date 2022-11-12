@@ -8,8 +8,8 @@ export class CommonService {
   // service
   public wheelEvent = new Subject();
 
-  public disabledWheelEvent = true; // 禁用原始滑動，!!正式版為true!!
-  private _index: number = 0; // 當前索引，!!正式版起始值為0!!
+  public disabledWheelEvent = true; // 禁用原始滑動  !!正式版為true!!
+  private _index: number = 6; // 當前索引  !!正式版起始值為0!!
   private _maxIndexBeen: number = 0; // 曾到過的最大索引
   private _surpriseCardFinish = false;
 
@@ -57,7 +57,10 @@ export class CommonService {
     const distance = el.nativeElement.getBoundingClientRect().top;
     const eleHeight = el.nativeElement.getBoundingClientRect().height;
     const halfEleHeight = eleHeight / 2;
-    return (distance > -halfEleHeight) && (distance < eleHeight);
+    const isMobileSize = window.innerWidth < 767;
+
+    if (isMobileSize) { return (distance * 0.5 > -halfEleHeight) && (distance * 0.5 < eleHeight); }
+    else { return (distance > -halfEleHeight) && (distance < eleHeight); }
   }
 
   surpriseCardFinish() {
