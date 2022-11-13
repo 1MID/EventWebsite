@@ -7,8 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FooterComponent implements OnInit {
 
-  block1ImgSrc = ['assets/footer/1.png', 'assets/footer/2.png', 'assets/footer/3.png', 'assets/footer/4.png']
-  block2ImgSrc = ['assets/footer/a.png', 'assets/footer/b.png', 'assets/footer/c.png']
+  block1ImgSrc = ['assets/footer/mobile/1.png', 'assets/footer/mobile/2.png', 'assets/footer/mobile/3.png', 'assets/footer/mobile/4.png']
+  block2ImgSrc = [
+    { src: 'assets/footer/a.png', url: 'https://blockstudio.tw/' },
+    { src: 'assets/footer/b.png', url: 'https://www.kdanmobile.com/zh-tw' },
+    { src: 'assets/footer/c.png', url: 'https://titansoft.com/tw' }
+  ]
   constructor() { }
 
   ngOnInit(): void {

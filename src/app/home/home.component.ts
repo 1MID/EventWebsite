@@ -1,4 +1,4 @@
-import { Component, HostListener, OnDestroy, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, HostListener, OnDestroy, OnInit, Renderer2, ViewChild } from '@angular/core';
 import { fromEvent, Subscription, interval } from 'rxjs';
 import { tap, throttleTime, throttle } from 'rxjs/operators';
 import { CommonService } from './service/common.service';
@@ -9,11 +9,13 @@ import { MouseEffectService } from './service/mouse-effect.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy, AfterViewInit {
+  @ViewChild("main") main!: ElementRef;
   private scrollEventSub!: Subscription;
   private touchEventSub!: Subscription;
   trails: any = [];
   touchStartY = 0;
+  showLoading = true;
 
   @HostListener("wheel", ["$event"])
   public onScroll(event: any) {
@@ -32,12 +34,14 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   @HostListener('window:resize', ['$event'])
   public onResize(event: any) {
+    this.reloadPage();
     this.commonService.scrollToCurElement();
   }
 
   constructor(
     private commonService: CommonService,
-    private mouseEffectService: MouseEffectService
+    private mouseEffectService: MouseEffectService,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
@@ -46,10 +50,25 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.mouseEffectService.init();
   }
 
+  ngAfterViewInit(): void {
+    setTimeout(() => { this.reloadPage(), 1500 });
+  }
+
   ngOnDestroy(): void {
     this.scrollEventSub?.unsubscribe();
     this.touchEventSub?.unsubscribe();
     this.mouseEffectService.destroy();
+  }
+
+  reloadPage() {
+    this.commonService.disabledModifyIndex();
+    this.showLoading = true;
+    this.renderer.removeClass(this.main.nativeElement, 'animate__fadeIn')
+    setTimeout(() => {
+      this.showLoading = false;
+      this.renderer.addClass(this.main.nativeElement, 'animate__fadeIn')
+      this.commonService.enabledModifyIndex();
+    }, 1000);
   }
 
   private getWheelEvent() {

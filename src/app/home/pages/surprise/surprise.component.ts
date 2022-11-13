@@ -13,6 +13,7 @@ export class SurpriseComponent implements OnInit {
   @ViewChild("scrollItem16") scrollItem16!: ElementRef;
 
   showUnrevealed: boolean = false;
+  surpriseCardFinish = false;
 
   constructor(
     private renderer: Renderer2,
@@ -52,6 +53,7 @@ export class SurpriseComponent implements OnInit {
       this.renderer.addClass(this.scrollItem16.nativeElement, 'show-card');
       this.commonService.scrollToTargetIndex(16);
       this.commonService.surpriseCardFinish();
+      this.surpriseCardFinish = true;
     }, 2000);
 
   }

@@ -17,6 +17,7 @@ import { PrizeComponent } from './home/pages/prize/prize.component';
 import { SurpriseComponent } from './home/pages/surprise/surprise.component';
 import { MagicWandComponent } from './home/components/magic-wand/magic-wand.component';
 import { FooterComponent } from './home/components/footer/footer.component';
+import { LoadingComponent } from './home/components/loading/loading.component';
 
 export function playerFactory() {
   return player;
@@ -35,7 +36,8 @@ export function playerFactory() {
     PrizeComponent,
     SurpriseComponent,
     MagicWandComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

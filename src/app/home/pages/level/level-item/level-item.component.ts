@@ -15,4 +15,8 @@ export class LevelItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  openLinkTo(url: string) {
+    window.open(url, '_blank');
+  }
+
 }

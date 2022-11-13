@@ -5,7 +5,12 @@
     <div class="block-2">
         <span class="title">贊助單位</span>
         <div class="sponsor">
-            <img *ngFor="let src of block2ImgSrc" [src]="src">
+            <ng-container *ngFor="let item of block2ImgSrc">
+                <a [href]="item.url" target="_blank" rel="noopener noreferrer">
+                    <img [src]="item.src">
+                </a>
+            </ng-container>
+
         </div>
         <span class="author">六角日報 © Code: Ray Yeh / Design: KT</span>
     </div>
