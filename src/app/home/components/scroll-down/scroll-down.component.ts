@@ -7,7 +7,7 @@ import { AnimationOptions } from 'ngx-lottie';
   styleUrls: ['./scroll-down.component.scss']
 })
 export class ScrollDownComponent implements OnInit {
-  lottieOptions: AnimationOptions = { path: '../../../../assets/common/scroll_down.json' }
+  lottieOptions: AnimationOptions = { path: 'assets/common/scroll_down.json' }
 
   constructor() { }
 
